@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spam Mail Detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="wrapper">
+
+    <header class="site-header">
+      
+      <h1>Spam Mail <span>Detector</span></h1>
+      <p class="subtitle">Paste any message or email and let the model tell you if it's spam or ham.</p>
+    </header>
+
+    <main class="card main-card">
+      <label for="messageInput" class="field-label">Your message</label>
+      <textarea
+        id="messageInput"
+        placeholder="e.g. Congratulations! You've WON a $1000 Walmart gift card. Click here to claim now!!!"
+        rows="7"
+      ></textarea>
+
+      <div class="controls-row">
+        <div class="char-count"><span id="charCount">0</span> characters</div>
+        <div class="sample-buttons">
+          <button class="chip chip-spam" data-sample="spam">Try spam example</button>
+          <button class="chip chip-ham" data-sample="ham">Try ham example</button>
+        </div>
+      </div>
+
+      <button id="analyzeBtn" class="primary-btn">
+        <span id="btnText">Analyze Message</span>
+        <span id="btnSpinner" class="spinner hidden"></span>
+      </button>
+
+      <p id="errorMsg" class="error-msg hidden"></p>
+    </main>
+
+    <section id="resultSection" class="card result-card hidden">
+      <div class="result-header">
+        <div id="resultIcon" class="result-icon">🚫</div>
+        <div>
+          <div id="resultLabel" class="result-label">SPAM</div>
+          <div id="resultSub" class="result-sub">This message looks suspicious</div>
+        </div>
+      </div>
+
+      <div class="confidence-block">
+        <div class="confidence-labels">
+          <span>Confidence</span>
+          <span id="confidenceValue">0%</span>
+        </div>
+        <div class="confidence-bar-track">
+          <div id="confidenceBarFill" class="confidence-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="spam-meter-block">
+        <div class="confidence-labels">
+          <span>Ham 🌿</span>
+          <span>Spam 🚩</span>
+        </div>
+        <div class="meter-track">
+          <div id="meterFill" class="meter-fill"></div>
+          <div id="meterDot" class="meter-dot"></div>
+        </div>
+      </div>
+
+      <div id="signalWords" class="signal-words"></div>
+
+      <details class="cleaned-details">
+        <summary>See preprocessed text used by the model</summary>
+        <p id="cleanedText" class="cleaned-text"></p>
+      </details>
+    </section>
+
+    <section class="card info-card">
+      <h2>Model Performance</h2>
+      <p class="info-note">Trained on the SMS Spam Collection dataset using TF-IDF features + a Linear SVM classifier.</p>
+      <div id="metricsGrid" class="metrics-grid">
+        <div class="metric-skeleton"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      Built with TF-IDF + scikit-learn, served via FastAPI 🤎💗
+    </footer>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
