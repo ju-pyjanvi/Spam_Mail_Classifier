@@ -3,6 +3,10 @@
 Classifies SMS/email messages as spam or ham, with a brown & pink HTML/CSS/JS
 frontend backed by a FastAPI model server.
 
+Try It Out! - 
+
+Frontend -  https://ju-pyjanvi.github.io/Spam_Mail_Classifier/
+
 ## Files
 - `spam.csv` — SMS Spam Collection dataset (5,572 messages, from UCI/Kaggle)
 - `train_model.py` — cleans text (lowercase, strip urls/emails/numbers/punctuation,
